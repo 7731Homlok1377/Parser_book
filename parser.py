@@ -6,10 +6,10 @@ from bs4 import BeautifulSoup
 import config
 
 def write_to_file(i, req):
-    with open(f"page_{i}.html", "w", encoding="utf-8") as file:
+    with open(f"html/page_{i}.html", "w", encoding="utf-8") as file:
         file.write(req.text)
 
-with open("main.html", encoding="utf-8") as file:
+with open("html/main.html", encoding="utf-8") as file:
     src = file.read()
 soup = BeautifulSoup(src, "lxml")
 all_category_hrefs = soup.find_all(class_ = "pagination__text")
@@ -21,7 +21,7 @@ print(all_category_hrefs[-1].text)
 for page in range(5):
     # req = requests.get(f"https://www.chitai-gorod.ru/catalog/books-18030?page={page}", headers=config.headers)
     # write_to_file(page, req)
-    with open(f"page_{page}.html", encoding="utf-8") as file:
+    with open(f"html/page_{page}.html", encoding="utf-8") as file:
         src = file.read()
     soup_page = BeautifulSoup(src, "lxml")
 
